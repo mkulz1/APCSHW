@@ -49,12 +49,12 @@ public class SuperArray{
     }
 
     public Object set(int index, Object o){
-        if ( index < currentLength && index >= 0){
+        if ( index > currentLength || index < 0){
+	    throw new IndexOutOfBoundsException();
+	}else{
 	    Object oldValue = data[index];
 	    data[index] = o;
 	    return oldValue;
-	}else{
-	    return this.get(index);
 	}
     }
 

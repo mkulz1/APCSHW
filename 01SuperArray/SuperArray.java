@@ -21,6 +21,7 @@ public class SuperArray{
 	for(int i = 0; i < data.length; i++){
 	    data[i] = null;
 	}
+	currentLength = 0; // If its there, then it doesn't print "null"
     }
 
     public void add(Object o) {
@@ -63,7 +64,6 @@ public class SuperArray{
         for (int i = 0; i < s; i++)
             newData[i] = data[i];
         data=newData;
-	//	newData.currentLength = 0;
     }
     
     public Object get(int index) {

@@ -2,8 +2,8 @@ imp ort java.util.*;
 public class ArrayListMethods{
   
       public static void collapseDuplicates(ArrayList<Integer> L){
-			for(int i = 0; i < L.size()-1; i++){	      
-	  			 if(L.get(i)==L.get(i+1)){
+	for(int i = 0; i < L.size()-1; i++){	      
+		if(L.get(i)==L.get(i+1)){
 		L.remove(i);
 		i--;
 	    }

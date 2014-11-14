@@ -15,7 +15,7 @@ public class ArrayListMethods{
 	for(int i = L.size()-1; i > 0; i--){
 	    int x = (r.nextInt(i));
 	    L.add(L.get(x));
-	    L.remove(i);
+	    L.remove(x);
 	}
     }
     
@@ -37,7 +37,7 @@ public class ArrayListMethods{
 	collapseDuplicates(L);
 	System.out.println("New Collapsed Array:");
 	System.out.println(L); // See new array
-	System.outlprintln("Randomized Array:");
+	System.out.println("Randomized Array:");
 	randomize(L);
 	System.out.println(L);
     }

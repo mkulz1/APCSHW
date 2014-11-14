@@ -1,21 +1,12 @@
-import java.util.*;
+imp ort java.util.*;
 public class ArrayListMethods{
-
-    public static void collapseDuplicates( ArrayList<Integer> L ){
-	for(int i = 0; i < L.size()-1; i++){	    
-	    if(L.get(i)==L.get(i+1)){
+  
+      public static void collapseDuplicates(ArrayList<Integer> L){
+	for(int i = 0; i < L.size()-1; i++){	      
+		if(L.get(i)==L.get(i+1)){
 		L.remove(i);
 		i--;
 	    }
-	}
-    }
-
-    public static void randomize( ArrayList<Integer> L ){
-	Random r = new Random();
-	for(int i = L.size()-1; i > 0; i--){
-	    int x = (r.nextInt(i));
-	    L.add(L.get(x));
-	    L.remove(i);
 	}
     }
     
@@ -37,8 +28,5 @@ public class ArrayListMethods{
 	collapseDuplicates(L);
 	System.out.println("New Collapsed Array:");
 	System.out.println(L); // See new array
-	System.outlprintln("Randomized Array:");
-	randomize(L);
-	System.out.println(L);
     }
 }

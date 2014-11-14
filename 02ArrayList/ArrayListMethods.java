@@ -32,6 +32,8 @@ public class ArrayListMethods{
 	L.add(13);
 	L.add(13);
 	L.add(13);
+	L.add(46);
+	L.add(46);
 	System.out.println("Original Array:");
 	System.out.println(L); // See original array
 	collapseDuplicates(L);
@@ -39,6 +41,6 @@ public class ArrayListMethods{
 	System.out.println(L); // See new array
 	System.out.println("Randomized Array:");
 	randomize(L);
-	System.out.println(L);
+	System.out.println(L); // See randomized array
     }
 }

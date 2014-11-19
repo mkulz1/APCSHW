@@ -12,7 +12,11 @@ public class WordGrid{
 
     /**Set all values in the WordGrid to spaces ' '*/
     private void clear(){
-
+	for(int rows = 0; rows < data.length; rows++){
+	    for(int columns = 0; columns < data[0].length; columns++){
+		data[rows][columns] = ' ';
+	    }
+	}
     }
 
     /**The proper formatting for a WordGrid is created in the toString.

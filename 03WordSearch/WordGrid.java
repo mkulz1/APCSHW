@@ -24,6 +24,13 @@ public class WordGrid{
      *separated by newlines.
      */
     public String toString(){
+	String result = " ";
+	for(int rows = 0; rows < data.length; rows++){
+	    for(int columns = 0; columns < data[0].length; columns++){
+		result += data[rows][columns];
+	    }
+	    result += "/n";
+	}
 	return " ";
     }
 

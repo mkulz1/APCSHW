@@ -35,14 +35,14 @@ public class WordGrid{
      *separated by newlines.
      */
     public String toString(){
-	String result = " ";
+	String result = "";
 	for(int rows = 0; rows < data.length; rows++){
 	    for(int columns = 0; columns < data[rows].length; columns++){
 		result += data[rows][columns] + " ";
 	    }
-	    result += "/n";
+	    result += "\n";
 	}
-	return " ";
+	return result;
     }
 
     /**Attempts to add a given word to the specified position of the WordGrid.

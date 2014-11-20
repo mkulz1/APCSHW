@@ -55,12 +55,35 @@ public class WordGrid{
      *@return true when the word is added successfully. When the word doesn't fit,
      *or there are overlapping letters that do not match, then false is returned.
      */
+
     public boolean addWordHorizontal(String word,int row, int col){
+	int column = col; // To keep in check with the grid spaces.
+	//Makes sure the word will fit.
+	for(int i = 0; i < word.length(); i++){  
+	    if(data[row][column] != ' ' && data[row][col] != word.charAt(i)){
+		return false;
+	    }
+	    column++;
+	}
+	//Actually puts the word in.
+	column = col; // To fill in each column space.
+	for(int i = 0; i < word.length(); i++){
+	    data[row][column] = word.charAt(i);
+	    column++;
+	}
 	return true;
     }
 
-    //vertical + diagonal should be implemented as well.
+    public boolean addWordVertical(String word,int row, int col){
+	return true;
+    }
 
+    public boolean addWordDiagonal(String word,int row, int col){
+	return true;   
+    }
+
+
+    // MAIN METHOD ----- TESTING
     public static void main(String[] args) {
 	WordGrid data = new WordGrid(6,6);
 	System.out.println(data);

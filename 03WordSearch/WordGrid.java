@@ -7,13 +7,17 @@ public class WordGrid{
      *@param col is the starting width of the WordGrid
      */
     public WordGrid(int rows,int cols){
-	char[][]data = new char[rows][cols];
+	data = new char[rows][cols];
+	clear();
+    }
+    public WordGrid(){
+	this(6,6);       // Default makes a 6x6 grid
     }
 
     /**Set all values in the WordGrid to spaces ' '*/
     private void clear(){
 	for(int rows = 0; rows < data.length; rows++){
-	    for(int columns = 0; columns < data[0].length; columns++){
+	    for(int columns = 0; columns < data[rows].length; columns++){
 		data[rows][columns] = ' ';
 	    }
 	}
@@ -52,6 +56,7 @@ public class WordGrid{
 
     public static void main(String[] args) {
 	WordGrid data = new WordGrid(6,6);
+	System.out.println(data);
     }
 }
 

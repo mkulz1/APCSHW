@@ -75,10 +75,42 @@ public class WordGrid{
     }
 
     public boolean addWordVertical(String word,int row, int col){
+	int row_ = row; // To keep in check with the grid spaces.
+	//Makes sure the word will fit.
+	for(int i = 0; i < word.length(); i++){  
+	    if(data[row_][col] != ' ' && data[row][col] != word.charAt(i)){
+		return false;
+	    }
+	    row_++;
+	}
+	//Actually puts the word in.
+	row_ = row; // To fill in each row space.
+	for(int i = 0; i < word.length(); i++){
+	    data[row_][col] = word.charAt(i);
+	    row_++;
+	}
 	return true;
     }
 
     public boolean addWordDiagonal(String word,int row, int col){
+	int row_ = row;
+	int column = col; // To keep in check with the grid spaces.
+	//Makes sure the word will fit.
+	for(int i = 0; i < word.length(); i++){  
+	    if(data[row_][column] != ' ' && data[row][col] != word.charAt(i)){
+		return false;
+	    }
+	    row_++;
+	    column++;
+	}
+	//Actually puts the word in.
+	row_ = row;
+	column = col; // To fill in each row space.
+	for(int i = 0; i < word.length(); i++){
+	    data[row_][column] = word.charAt(i);
+	    row_++;
+	    column++;
+	}
 	return true;   
     }
 

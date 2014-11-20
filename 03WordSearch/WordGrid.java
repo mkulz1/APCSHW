@@ -22,6 +22,13 @@ public class WordGrid{
 	    }
 	}
     }
+    private void fill(){
+	for(int rows = 0; rows < data.length; rows++){
+	    for(int columns = 0; columns < data[rows].length; columns++){
+		data[rows][columns] = '_';
+	    }
+	}
+    }
 
     /**The proper formatting for a WordGrid is created in the toString.
      *@return a String with each character separated by spaces, and each row
@@ -30,8 +37,8 @@ public class WordGrid{
     public String toString(){
 	String result = " ";
 	for(int rows = 0; rows < data.length; rows++){
-	    for(int columns = 0; columns < data[0].length; columns++){
-		result += data[rows][columns];
+	    for(int columns = 0; columns < data[rows].length; columns++){
+		result += data[rows][columns] + " ";
 	    }
 	    result += "/n";
 	}
@@ -56,6 +63,8 @@ public class WordGrid{
 
     public static void main(String[] args) {
 	WordGrid data = new WordGrid(6,6);
+	System.out.println(data);
+	data.fill();
 	System.out.println(data);
     }
 }

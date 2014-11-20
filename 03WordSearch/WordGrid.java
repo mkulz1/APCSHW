@@ -1,5 +1,7 @@
+import java.util.Random;
 public class WordGrid{
     private char[][]data;
+    String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     /**Initialize the grid to the size specified and fill all of the positions
      *with spaces.
@@ -56,7 +58,7 @@ public class WordGrid{
      *or there are overlapping letters that do not match, then false is returned.
      */
 
-    public boolean addWordHorizontal(String word,int row, int col){
+    private boolean addWordHorizontal(String word,int row, int col){
 	int column = col; // To keep in check with the grid spaces.
 	//Makes sure the word will fit.
 	for(int i = 0; i < word.length(); i++){  
@@ -74,7 +76,7 @@ public class WordGrid{
 	return true;
     }
 
-    public boolean addWordVertical(String word,int row, int col){
+    private boolean addWordVertical(String word,int row, int col){
 	int row_ = row; // To keep in check with the grid spaces.
 	//Makes sure the word will fit.
 	for(int i = 0; i < word.length(); i++){  
@@ -92,7 +94,8 @@ public class WordGrid{
 	return true;
     }
 
-    public boolean addWordDiagonal(String word,int row, int col){
+
+    private boolean addWordDiagonal(String word,int row, int col){
 	int row_ = row;
 	int column = col; // To keep in check with the grid spaces.
 	//Makes sure the word will fit.
@@ -114,12 +117,33 @@ public class WordGrid{
 	return true;   
     }
 
+    public void fillUp(){
+	Random r = new Random();
+	for(int rows = 0; rows < data.length; rows++){
+	    for(int columns = 0; columns < data[rows].length; columns++){
+	        if(data[rows][columns] == ' '){
+		    data[rows][columns] = alphabet.charAt(r.nextInt(26));
+		}
+	    }
+	}
+    }
 
     // MAIN METHOD ----- TESTING
     public static void main(String[] args) {
 	WordGrid data = new WordGrid(6,6);
+	System.out.println("WordGrid:");
 	System.out.println(data);
-	data.fill();
+	//	data.fill();
+	//      System.out.println(data);
+	data.addWordHorizontal("yoyo",0,0);
+	System.out.println(data);
+	data.addWordHorizontal("github",1,0);
+	data.addWordHorizontal("fire",2,0);
+	data.addWordHorizontal("cookie",3,0);
+	data.addWordHorizontal("sun",4,0);
+	data.addWordHorizontal("bunny",5,0);
+	System.out.println(data);
+	data.fillUp();
 	System.out.println(data);
     }
 }

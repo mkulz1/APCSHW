@@ -1,6 +1,7 @@
 import java.util.Random;
 public class WordGrid{
     private char[][]data;
+    private String[]wordBank;
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     /**Initialize the grid to the size specified and fill all of the positions
@@ -24,6 +25,7 @@ public class WordGrid{
 	    }
 	}
     }
+    // Fills it with a random character - For testing purposes.
     private void fill(){
 	for(int rows = 0; rows < data.length; rows++){
 	    for(int columns = 0; columns < data[rows].length; columns++){
@@ -130,7 +132,7 @@ public class WordGrid{
 
     // MAIN METHOD ----- TESTING
     public static void main(String[] args) {
-	WordGrid data = new WordGrid(6,6);
+	WordGrid data = new WordGrid(10,10);
 	System.out.println("WordGrid:");
 	System.out.println(data);
 	//	data.fill();
@@ -138,10 +140,12 @@ public class WordGrid{
 	data.addWordHorizontal("yoyo",0,0);
 	System.out.println(data);
 	data.addWordHorizontal("github",1,0);
-	data.addWordHorizontal("fire",2,0);
+	data.addWordDiagonal("fire",5,5);
 	data.addWordHorizontal("cookie",3,0);
 	data.addWordHorizontal("sun",4,0);
-	data.addWordHorizontal("bunny",5,0);
+	data.addWordVertical("bunny",0,9);
+	data.addWordVertical("irk",6,6);
+	data.addWordVertical("birk",5,6); // Does not work for some reason!
 	System.out.println(data);
 	data.fillUp();
 	System.out.println(data);

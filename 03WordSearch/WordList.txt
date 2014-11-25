@@ -1,0 +1,17 @@
+london
+paris
+beijing
+munich
+berlin
+prague
+chicago
+boston
+dubai
+dublin
+toronto
+madrid
+rome
+kiev
+stokholm
+zurich
+copenhagen 

@@ -1,7 +1,7 @@
 import java.util.Random;
 public class WordGrid{
     private char[][]data;
-    private String[]wordBank;
+    Random r = new Random();
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     /**Initialize the grid to the size specified and fill all of the positions
@@ -14,7 +14,7 @@ public class WordGrid{
 	clear();
     }
     public WordGrid(){
-	this(6,6);       // Default makes a 6x6 grid
+	this(10,10);       // Default makes a 10x10 grid
     }
 
     /**Set all values in the WordGrid to spaces ' '*/
@@ -25,6 +25,7 @@ public class WordGrid{
 	    }
 	}
     }
+
     // Fills it with a random character - For testing purposes.
     private void fill(){
 	for(int rows = 0; rows < data.length; rows++){
@@ -34,7 +35,7 @@ public class WordGrid{
 	}
     }
 
-    /**The proper formatting for a WordGrid is created in the toString.
+    /**The proper formatting for a WordGrid is created in the toStrisng.
      *@return a String with each character separated by spaces, and each row
      *separated by newlines.
      */
@@ -60,67 +61,56 @@ public class WordGrid{
      *or there are overlapping letters that do not match, then false is returned.
      */
 
-    private boolean addWordHorizontal(String word,int row, int col){
-	int column = col; // To keep in check with the grid spaces.
-	//Makes sure the word will fit.
-	for(int i = 0; i < word.length(); i++){  
-	    if(data[row][column] != ' ' && data[row][col] != word.charAt(i)){
+    private boolean addWord(String word,int row, int col, int dx, int dy){
+	if (wordFits(word, row, col, dx, dy)){
+	    for(int i = 0; i < word.length(); i++){
+		data[row][col] = word.charAt(i);
+		col += dx;
+		row += dy;
+	    }
+	    return true;
+	}else{
+	    return false;
+	}
+    }
+
+    /**
+     *Checks to see whether the word fits at the specified position
+     *@param word is the word to be added to WordGrid
+     *@param row is the vertical location of the first letter of the word
+     *@param col is the horizontal location of the first letter of the word
+     *@param dx is an integer between (-1,1) that shows the horizontal direction of the next letter
+     *@param dy is an integer between (-1,1) that shows the vertical direction of the next letter
+     *@return true if the word fits, false if it does not
+     */
+    private boolean wordFits(String word, int row, int col, int dx, int dy){
+	if ((dx==0 && dy==0) ||
+	    row < 0 || col < 0 ||
+	    col + dx*word.length() > data[0].length ||
+	    col + dy*word.length() > data.length){
+	    return false;
+	}
+	for (int i = 0; i < word.length(); i++){
+	    if (data[row][col] != ' ' && data[row][col] != word.charAt(i)){
 		return false;
 	    }
-	    column++;
-	}
-	//Actually puts the word in.
-	column = col; // To fill in each column space.
-	for(int i = 0; i < word.length(); i++){
-	    data[row][column] = word.charAt(i);
-	    column++;
+	    row += dy;
+	    col += dx;
 	}
 	return true;
     }
-
-    private boolean addWordVertical(String word,int row, int col){
-	int row_ = row; // To keep in check with the grid spaces.
-	//Makes sure the word will fit.
-	for(int i = 0; i < word.length(); i++){  
-	    if(data[row_][col] != ' ' && data[row][col] != word.charAt(i)){
-		return false;
-	    }
-	    row_++;
-	}
-	//Actually puts the word in.
-	row_ = row; // To fill in each row space.
-	for(int i = 0; i < word.length(); i++){
-	    data[row_][col] = word.charAt(i);
-	    row_++;
-	}
-	return true;
-    }
-
-
-    private boolean addWordDiagonal(String word,int row, int col){
-	int row_ = row;
-	int column = col; // To keep in check with the grid spaces.
-	//Makes sure the word will fit.
-	for(int i = 0; i < word.length(); i++){  
-	    if(data[row_][column] != ' ' && data[row][col] != word.charAt(i)){
-		return false;
-	    }
-	    row_++;
-	    column++;
-	}
-	//Actually puts the word in.
-	row_ = row;
-	column = col; // To fill in each row space.
-	for(int i = 0; i < word.length(); i++){
-	    data[row_][column] = word.charAt(i);
-	    row_++;
-	    column++;
-	}
-	return true;   
+    
+    public boolean addWordRandomly(String word){
+	int tries = 10;
+	boolean success;
+	do{
+	    success = addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextInt(3)-1, r.nextInt(3)-1);
+	    tries--;
+	}while(!success && tries>0);
+	    return tries != 0;
     }
 
     public void fillUp(){
-	Random r = new Random();
 	for(int rows = 0; rows < data.length; rows++){
 	    for(int columns = 0; columns < data[rows].length; columns++){
 	        if(data[rows][columns] == ' '){
@@ -128,27 +118,6 @@ public class WordGrid{
 		}
 	    }
 	}
-    }
-
-    // MAIN METHOD ----- TESTING
-    public static void main(String[] args) {
-	WordGrid data = new WordGrid(10,10);
-	System.out.println("WordGrid:");
-	System.out.println(data);
-	//	data.fill();
-	//      System.out.println(data);
-	data.addWordHorizontal("yoyo",0,0);
-	System.out.println(data);
-	data.addWordHorizontal("github",1,0);
-	data.addWordDiagonal("fire",5,5);
-	data.addWordHorizontal("cookie",3,0);
-	data.addWordHorizontal("sun",4,0);
-	data.addWordVertical("bunny",0,9);
-	data.addWordVertical("irk",6,6);
-	data.addWordVertical("birk",5,6); // Does not work for some reason!
-	System.out.println(data);
-	data.fillUp();
-	System.out.println(data);
     }
 }
 

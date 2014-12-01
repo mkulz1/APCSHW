@@ -3,10 +3,10 @@ public class SuperArray{
     int currentLength;
 
     public SuperArray(){
-	data = new Object[10];
+	data = new String[10];
     }
     public SuperArray(int size){
-	data = new Object[size];
+	data = new String[size];
     }
 
     public String toString() {
@@ -24,14 +24,14 @@ public class SuperArray{
 	//	currentLength = 0; // If its there, then it doesn't print "null"
     }
 
-    public void add(Object o) {
+    public void add(String o) {
         data[currentLength]=o;
         currentLength ++;
         if (currentLength==data.length)
             resize(data.length*2);
     }
     
-    public void add(int index, Object o){
+    public void add(int index, String o){
 	if (index < 0 || index > data.length){
 	    throw new IndexOutOfBoundsException();
 	}else if (index >= currentLength){
@@ -49,24 +49,24 @@ public class SuperArray{
 	}
     }
 
-    public Object set(int index, Object o){
+    public String set(int index, String o){
         if ( index > currentLength || index < 0){
 	    throw new IndexOutOfBoundsException();
 	}else{
-	    Object oldValue = data[index];
+	    String oldValue = data[index];
 	    data[index] = o;
 	    return oldValue;
 	}
     }
 
     private void resize(int s) {
-        Object[] newData = new Object[s];
+        String[] newData = new String[s];
         for (int i = 0; i < s; i++)
             newData[i] = data[i];
         data=newData;
     }
     
-    public Object get(int index) {
+    public String get(int index) {
         if (index >= currentLength || index < 0){
             throw new IndexOutOfBoundsException();
       	}else{
@@ -74,11 +74,11 @@ public class SuperArray{
 	}
     }
     
-    public Object remove(int index) {
+    public String remove(int index) {
         if (index >= currentLength || index < 0){
 	    throw new IndexOutOfBoundsException();
         }else{
-	    Object oldValue = data[index];
+	    String oldValue = data[index];
 	    for (int i = index; i < currentLength - 1; i++) {
 		if (i == data.length)
 		    resize(data.length + 10);

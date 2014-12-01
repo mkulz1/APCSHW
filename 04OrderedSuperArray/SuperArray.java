@@ -1,5 +1,5 @@
 public class SuperArray{
-    Object[] data;
+    String[] data;
     int currentLength;
 
     public SuperArray(){
@@ -92,21 +92,20 @@ public class SuperArray{
 	}
     }
     
-    public static void main(String[]args){
+    public static void main(String[] args){
 	SuperArray tester = new SuperArray(5); 
-	tester.add(2);
-	tester.add(3);
-	tester.add(4);
-	tester.add(5);
-	//	tester.add(6);
-	//	tester.get(8);
-	tester.set(0,44);
-	//	tester.set(14,9);
+	tester.add("hi");
+	tester.add("hello");
+	tester.add("hola");
+	tester.add("greetings");
+	System.out.println("In the array...");
 	System.out.println(tester);
-	tester.remove(0);
-	System.out.println(tester);
+	System.out.println("At index 3:");
+	tester.get(3);
+	System.out.println("Clearing the array...");
 	tester.clear();
 	System.out.println(tester);
+	System.out.println("Current length of the array:");
 	System.out.println(tester.currentLength);
     }
 }

@@ -1,4 +1,7 @@
+import java.util.*;
+import java.io.*;
 import java.util.Random;
+
 public class WordGrid{
     private char[][]data;
     Random r = new Random();
@@ -111,21 +114,25 @@ public class WordGrid{
     }
 
     public void addWordFile(String file){
+
 	try{
 	    File WordList = new File(file);
 	    Scanner in = new Scanner(file);
 	    ArrayList<String> wordBank = new ArrayList<String>();
 	    Random r = new Random();
+
 	    while(in.hasNext()){
 		wordBank.add(in.next());
 	    }
+	    // Fix this part!!!
 	    for(int i = 0; i < wordBank.size(); i++){
 		String word = wordBank.remove(r.nextInt(wordBank.size()));
 		data.addWordRandomly(word);
 	    }
 	    System.out.println(data);
+
 	}catch(FileNotFoundException e){
-	    System.out.println("No such file exists");
+	    System.out.println("File Does Not Exist");
 	}
     }
 

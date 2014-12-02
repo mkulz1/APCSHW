@@ -110,9 +110,11 @@ public class WordGrid{
      */
     private boolean wordFits(String word, int row, int col, int dx, int dy){
 	if ((dx==0 && dy==0) ||
-	    row < 0 || col < 0 ||
+	    (row < 0 || col < 0) ||
+	    row + dy*word.length() > data.length ||
+	    row + dy*word.length() < 0 ||
 	    col + dx*word.length() > data[0].length ||
-	    col + dy*word.length() > data.length){
+	    col + dx*word.length() < 0){
 	    return false;
 	}
 	for (int i = 0; i < word.length(); i++){
@@ -132,14 +134,7 @@ public class WordGrid{
      *@return true is the word was successfully fit into the grid, false if it was not.
      */
     public boolean addWordRandomly(String word){
-	int tries = 100;
-	boolean success;
-	do{
-	    success = addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextInt(3)-1, r.nextInt(3)-1);
-	    tries--;
-	    
-	}while(!success && tries>0);
-	return tries != 0;
+return	addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextInt(3)-1, r.nextInt(3)-1);
     }
 
     /**
@@ -198,6 +193,7 @@ public class WordGrid{
 	    int tries = 100;
 	    do{
 		if(addWordRandomly(words.get(i))){
+		    wordsInPuzzle.add(words.get(i));
 		    tries = 0;
 		}else{
 		    tries--;

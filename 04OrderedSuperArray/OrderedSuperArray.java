@@ -9,7 +9,12 @@ public class OrderedSuperArray extends SuperArray{
     }
 
     public void add(String o){
-	super.add(o);
+	int rightIndex = data.length;
+	while( rightIndex>0 && get(rightIndex-1).compareTo(o) > 0 ){
+	    rightIndex--;
+	}
+	// Find the right index, and then add it there.
+	super.add(rightIndex,o);
     }
 
     public static void main(String[] args){

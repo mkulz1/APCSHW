@@ -91,6 +91,13 @@ public class SuperArray{
 	    return oldValue;
 	}
     }
+
+    public void insertionSort(){
+	String temp = "";
+	for( int i = 1; i < size(); i++ ){
+	
+	}
+    } 
     
     public static void main(String[] args){
 	SuperArray tester = new SuperArray(5); 

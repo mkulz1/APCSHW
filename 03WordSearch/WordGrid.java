@@ -147,7 +147,7 @@ public class WordGrid{
 	    // Fix this part!!!
 	    for (int i = 0; i < wordBank.size(); i++){
 		String wordi = wordBank.remove(r.nextInt(wordBank.size()));
-		data.addWordRandomly(word);
+		addWordRandomly(wordi); 
 	    }
 	    System.out.println(data);
 	    if (fillRandomLetters){
@@ -163,11 +163,12 @@ public class WordGrid{
 	}
     }
 
-    public String[] addWordList(String[] wordBank){
-	for(int w; i<wordBank.lengthl;i++ ){
 
-	    if(addWordRandomly(w)){
-		wordsInPuzzle.add(w);
+    public void addWordList(ArrayList<String> words){
+    for(int w = 0; w < words.size(); w++ ){
+	String wordie = words.get(w);
+	if(addWordRandomly(wordie)){    // <<< w needs to be a string.
+		wordsInPuzzle.add(wordie);
 	    }
 	}
     }

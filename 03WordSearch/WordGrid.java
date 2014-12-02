@@ -6,6 +6,7 @@ public class WordGrid{
     private char[][]data;
     private ArrayList<String> wordsInPuzzle = new ArrayList<String>();
     Random r = new Random();
+    String wordsToFind = "";
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
     
     /**Initializes the grid to the size specified and fills all of the positions
@@ -16,6 +17,7 @@ public class WordGrid{
     public WordGrid(int rows,int cols){
 	data = new char[rows][cols];
 	clear();
+	fill();
     }
     public WordGrid(){
 	this(10,10);       // Default makes a 10x10 grid
@@ -133,10 +135,10 @@ public class WordGrid{
      *@param String name of file that contains the word list.
      *@param Boolean whether the solution should be shown. If true, solution is not shown. 
      */
-    public void addWordFile(String file, boolean fillRandomLetters){
+    public void loadWordsFromFile(String fileName, boolean fillRandomLetters){
 
 	try{
-	    File WordList = new File(file);
+	    File WordList = new File(fileName);
 	    Scanner in = new Scanner(WordList);
 	    ArrayList<String> wordBank = new ArrayList<String>();
 	    Random r = new Random();
@@ -145,11 +147,7 @@ public class WordGrid{
 		wordBank.add(in.next());
 	    }
 	    addWordList(wordBank);
-	    /* Fix this part!!!
-	    for (int i = 0; i < wordBank.size(); i++){
-		String wordi = wordBank.remove(r.nextInt(wordBank.size()));
-		addWordRandomly(wordi); 
-		}*/
+	   
 	    if (fillRandomLetters){
 		fillUp();
 	    }else{
@@ -164,15 +162,24 @@ public class WordGrid{
 	}
     }
 
+    public String wordsInPuzzle(){
+	String t = "";
+	for (int i = 0; i < wordsInPuzzle.size(); i++){
+	    t += wordsInPuzzle.get(i);
+	}
+	return t;
+    }
+
 
     public void addWordList(ArrayList<String> words){
     for(int w = 0; w < words.size(); w++ ){
 	String wordie = words.get(w);
-	if(addWordRandomly(wordie)){    // <<< w needs to be a string.
+	if(addWordRandomly(wordie)){   
 		wordsInPuzzle.add(wordie);
 	    }
 	}
     }
+
 
     /**
      *Fills the empty spaces in the grid with random letters.

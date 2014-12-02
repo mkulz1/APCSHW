@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class WordGrid{
     private char[][]data;
+    private ArrayList<String> words = new ArrayList<String>();
     Random r = new Random();
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -113,11 +114,11 @@ public class WordGrid{
 	    return tries != 0;
     }
 
-    public void addWordFile(String file){
+    public void addWordFile(String file, boolean fillRandomLetters){
 
 	try{
 	    File WordList = new File(file);
-	    Scanner in = new Scanner(file);
+	    Scanner in = new Scanner(WordList);
 	    ArrayList<String> wordBank = new ArrayList<String>();
 	    Random r = new Random();
 
@@ -130,6 +131,11 @@ public class WordGrid{
 		data.addWordRandomly(word);
 	    }
 	    System.out.println(data);
+	    if(fillRandomLetters){
+		fillUp();
+	    }else{
+		fill();
+	    }
 
 	}catch(FileNotFoundException e){
 	    System.out.println("File Does Not Exist");
@@ -145,6 +151,10 @@ public class WordGrid{
 		}
 	    }
 	}
+    }
+
+    public void setSeed(long s){
+	r = new Random(s);
     }
 }
 

@@ -144,17 +144,18 @@ public class WordGrid{
 	    while (in.hasNext()){
 		wordBank.add(in.next());
 	    }
-	    // Fix this part!!!
+	    addWordList(wordBank);
+	    /* Fix this part!!!
 	    for (int i = 0; i < wordBank.size(); i++){
 		String wordi = wordBank.remove(r.nextInt(wordBank.size()));
 		addWordRandomly(wordi); 
-	    }
-	    System.out.println(data);
+		}*/
 	    if (fillRandomLetters){
 		fillUp();
 	    }else{
 		fill();
 	    }
+	    System.out.println(data);
 
 	}catch(FileNotFoundException e){
 

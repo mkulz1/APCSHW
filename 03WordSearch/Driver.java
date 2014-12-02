@@ -37,7 +37,8 @@ public class Driver{
 
 	System.out.println("WordGrid:");
 	System.out.println(data);  
-	data.loadWordsFromFile("WordList.txt",fillRandomLetters);		
+	data.loadWordsFromFile("WordList.txt",fillRandomLetters);
+	System.out.println(data);		
     }
 }
 

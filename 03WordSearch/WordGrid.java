@@ -17,7 +17,6 @@ public class WordGrid{
     public WordGrid(int rows,int cols){
 	data = new char[rows][cols];
 	clear();
-	fill();
     }
     public WordGrid(){
 	this(10,10);       // Default makes a 10x10 grid
@@ -40,6 +39,19 @@ public class WordGrid{
 	    for(int columns = 0; columns < data[rows].length; columns++){
 	        if(data[rows][columns] == ' '){
 		    data[rows][columns] = '_';
+		}
+	    }
+	}
+    }
+    
+    /**
+     *Fills the empty spaces in the grid with random letters.
+     */
+    public void fillUp(){
+	for(int rows = 0; rows < data.length; rows++){
+	    for(int columns = 0; columns < data[rows].length; columns++){
+	        if(data[rows][columns] == ' '){
+		    data[rows][columns] = alphabet.charAt(r.nextInt(26));
 		}
 	    }
 	}
@@ -74,7 +86,7 @@ public class WordGrid{
      */
 
     private boolean addWord(String word,int row, int col, int dx, int dy){
-	if (wordFits(word, row, col, dx, dy)){
+	if (wordFits(word, row, col, dx, dy)){   
 	    for(int i = 0; i < word.length(); i++){
 		data[row][col] = word.charAt(i);
 		col += dx;
@@ -146,7 +158,8 @@ public class WordGrid{
 	    while (in.hasNext()){
 		wordBank.add(in.next());
 	    }
-	    addWordList(wordBank);
+	    // addWordList(wordBank);
+	    createWordSearch(wordBank);
 	   
 	    if (fillRandomLetters){
 		fillUp();
@@ -182,21 +195,18 @@ public class WordGrid{
 
     public void createWordSearch(ArrayList<String> words){
 	for(int i = 0; i < words.size(); i++){
-data.
-
-
-    /**
-     *Fills the empty spaces in the grid with random letters.
-     */
-    public void fillUp(){
-	for(int rows = 0; rows < data.length; rows++){
-	    for(int columns = 0; columns < data[rows].length; columns++){
-	        if(data[rows][columns] == ' '){
-		    data[rows][columns] = alphabet.charAt(r.nextInt(26));
+	    int tries = 100;
+	    do{
+		if(addWordRandomly(words.get(i))){
+		    tries = 0;
+		}else{
+		    tries--;
 		}
-	    }
+		
+	    }while(tries>0);
 	}
     }
+
 
     public void setSeed(long s){
 	r.setSeed(s);

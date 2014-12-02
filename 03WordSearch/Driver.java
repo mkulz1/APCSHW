@@ -35,8 +35,7 @@ public class Driver{
 	    data.setSeed(Long.valueOf(args[2]));
 	}
 
-	System.out.println("WordGrid:");
-	System.out.println(data);  
+	System.out.println("WordSearch:");  
 	data.loadWordsFromFile("WordList.txt",fillRandomLetters);
 	System.out.println(data);		
     }

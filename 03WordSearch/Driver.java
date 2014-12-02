@@ -3,8 +3,8 @@ import java.io.*;
 public class Driver{
     public static void main(String[] args) {
 
-	int rows = 10;
-	int columns = 10;
+        String rows = "10";
+	String columns = "10";
 	boolean fillRandomLetters = true;
 	boolean isSeed = false;
 
@@ -19,7 +19,7 @@ public class Driver{
 	    rows = args[0];
 	    columns = args[1];
 	    isSeed = true;
-	    if (args[3].eguals("1")){
+	    if (args[3].equals("1")){
 		fillRandomLetters = false;
 	    }
 	}else{
@@ -30,7 +30,7 @@ public class Driver{
 	    System.out.println("java Driver [rows] [columns] [RandomSeed] [ShowSolution?]");
 	}
 
-	WordGrid data = new WordGrid(rows, columns);
+	WordGrid data = new WordGrid(Integer.valueOf(rows), Integer.valueOf(columns));
 	if(isSeed){
 	    data.setSeed(Long.valueOf(args[2]));
 	}

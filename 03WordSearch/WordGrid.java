@@ -175,7 +175,7 @@ return	addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextI
 	int counter = 5;
 	int spaceNext = 0;
 	for (int i = 0; i < WordsInPuzzle.size(); i++){
-	    spaceNext = (10 - WordsInPuzzle.get(i).length());
+	    spaceNext = (14 - WordsInPuzzle.get(i).length());
 	    if (counter == 0){
 		counter = 5;
 		t += "\n";

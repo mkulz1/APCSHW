@@ -11,11 +11,11 @@ public class Driver{
 	if (args.length == 2){
 	    rows = args[0];
 	    columns = args[1];
-	}else if(args.length == 3){
+	}else if (args.length == 3){
 	    rows = args[0];
 	    columns = args[1];
 	    isSeed = true;
-	}else if(args.length == 4){
+	}else if (args.length == 4){
 	    rows = args[0];
 	    columns = args[1];
 	    isSeed = true;
@@ -37,7 +37,7 @@ public class Driver{
 
 	System.out.println("WordGrid:");
 	System.out.println(data);
-	data.addWordFile("WordList.txt",true);	
+	data.addWordFile("WordList.txt",fillRandomLetters);	
 	
     }
 }

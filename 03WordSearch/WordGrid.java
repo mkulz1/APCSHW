@@ -7,8 +7,8 @@ public class WordGrid{
     private ArrayList<String> wordsInPuzzle = new ArrayList<String>();
     Random r = new Random();
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-    /**Initialize the grid to the size specified and fill all of the positions
+    
+    /**Initializes the grid to the size specified and fills all of the positions
      *with spaces.
      *@param row is the starting height of the WordGrid
      *@param col is the starting width of the WordGrid
@@ -21,7 +21,8 @@ public class WordGrid{
 	this(10,10);       // Default makes a 10x10 grid
     }
 
-    /**Set all values in the WordGrid to spaces ' '*/
+    /**Set all values in the WordGrid to spaces ' '
+     */
     private void clear(){
 	for(int rows = 0; rows < data.length; rows++){
 	    for(int columns = 0; columns < data[rows].length; columns++){
@@ -30,15 +31,19 @@ public class WordGrid{
 	}
     }
 
-    // Fills it with a random character - For testing purposes.
-    private void fill(){
+    /**Fills the grid with '_' spaces
+     */
+    public void fill(){
 	for(int rows = 0; rows < data.length; rows++){
 	    for(int columns = 0; columns < data[rows].length; columns++){
-		data[rows][columns] = '_';
+	        if(data[rows][columns] == ' '){
+		    data[rows][columns] = '_');
 	    }
 	}
     }
 
+    
+    
     /**The proper formatting for a WordGrid is created in the toStrisng.
      *@return a String with each character separated by spaces, and each row
      *separated by newlines.
@@ -104,9 +109,15 @@ public class WordGrid{
 	}
 	return true;
     }
-    
+
+    /** 
+     *Tries to fit a word into the grid.
+     *Tries 100 times before it gives up.
+     *@param word that's being put in the grid.
+     *@return true is the word was successfully fit into the grid, false if it was not.
+     */
     public boolean addWordRandomly(String word){
-	int tries = 10;
+	int tries = 100;
 	boolean success;
 	do{
 	    success = addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextInt(3)-1, r.nextInt(3)-1);
@@ -116,12 +127,17 @@ public class WordGrid{
 	return tries != 0;
     }
 
+    /**
+     *Imports the file with the list of words for the WordGrid
+     *@param String name of file that contains the word list.
+     *@param Boolean whether the solution should be shown. If true, solution is not shown. 
+     */
     public void addWordFile(String file, boolean fillRandomLetters){
 
 	try{
 	    File WordList = new File(file);
 	    Scanner in = new Scanner(WordList);
-	    ArrayList<String> wordsinPuzzle = new ArrayList<String>();
+	    ArrayList<String> wordBank = new ArrayList<String>();
 	    Random r = new Random();
 
 	    while (in.hasNext()){
@@ -129,7 +145,7 @@ public class WordGrid{
 	    }
 	    // Fix this part!!!
 	    for (int i = 0; i < wordBank.size(); i++){
-		String word = wordBank.remove(r.nextInt(wordBank.size()));
+		String wordi = wordBank.remove(r.nextInt(wordBank.size()));
 		data.addWordRandomly(word);
 	    }
 	    System.out.println(data);
@@ -146,7 +162,17 @@ public class WordGrid{
 	}
     }
 
+    public String[] addWordList(String[] wordBank){
+	for( ){
+	    if(addWordRandomly(w)){
+		wordsInPuzzle.add(w);
+	    }
+	}
+    }
 
+    /**
+     *Fills the empty spaces in the grid with random letters.
+     */
     public void fillUp(){
 	for(int rows = 0; rows < data.length; rows++){
 	    for(int columns = 0; columns < data[rows].length; columns++){

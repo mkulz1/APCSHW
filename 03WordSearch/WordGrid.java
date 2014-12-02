@@ -37,11 +37,12 @@ public class WordGrid{
 	for(int rows = 0; rows < data.length; rows++){
 	    for(int columns = 0; columns < data[rows].length; columns++){
 	        if(data[rows][columns] == ' '){
-		    data[rows][columns] = '_');
+		    data[rows][columns] = '_';
+		}
 	    }
 	}
     }
-
+    
     
     
     /**The proper formatting for a WordGrid is created in the toStrisng.
@@ -122,7 +123,7 @@ public class WordGrid{
 	do{
 	    success = addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextInt(3)-1, r.nextInt(3)-1);
 	    tries--;
-
+	    
 	}while(!success && tries>0);
 	return tries != 0;
     }
@@ -163,7 +164,8 @@ public class WordGrid{
     }
 
     public String[] addWordList(String[] wordBank){
-	for( ){
+	for(int w; i<wordBank.lengthl;i++ ){
+
 	    if(addWordRandomly(w)){
 		wordsInPuzzle.add(w);
 	    }

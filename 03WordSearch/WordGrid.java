@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class WordGrid{
     private char[][]data;
-    private ArrayList<String> words = new ArrayList<String>();
+    private ArrayList<String> wordsInPuzzle = new ArrayList<String>();
     Random r = new Random();
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -72,6 +72,7 @@ public class WordGrid{
 		col += dx;
 		row += dy;
 	    }
+	    wordsInPuzzle.add(word);
 	    return true;
 	}else{
 	    return false;
@@ -110,8 +111,9 @@ public class WordGrid{
 	do{
 	    success = addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextInt(3)-1, r.nextInt(3)-1);
 	    tries--;
+
 	}while(!success && tries>0);
-	    return tries != 0;
+	return tries != 0;
     }
 
     public void addWordFile(String file, boolean fillRandomLetters){
@@ -119,26 +121,28 @@ public class WordGrid{
 	try{
 	    File WordList = new File(file);
 	    Scanner in = new Scanner(WordList);
-	    ArrayList<String> wordBank = new ArrayList<String>();
+	    ArrayList<String> wordsinPuzzle = new ArrayList<String>();
 	    Random r = new Random();
 
-	    while(in.hasNext()){
+	    while (in.hasNext()){
 		wordBank.add(in.next());
 	    }
 	    // Fix this part!!!
-	    for(int i = 0; i < wordBank.size(); i++){
+	    for (int i = 0; i < wordBank.size(); i++){
 		String word = wordBank.remove(r.nextInt(wordBank.size()));
 		data.addWordRandomly(word);
 	    }
 	    System.out.println(data);
-	    if(fillRandomLetters){
+	    if (fillRandomLetters){
 		fillUp();
 	    }else{
 		fill();
 	    }
 
 	}catch(FileNotFoundException e){
+
 	    System.out.println("File Does Not Exist");
+
 	}
     }
 
@@ -154,7 +158,7 @@ public class WordGrid{
     }
 
     public void setSeed(long s){
-	r = new Random(s);
+	r.setSeed(s);
     }
 }
 

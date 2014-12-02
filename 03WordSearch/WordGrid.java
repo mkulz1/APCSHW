@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class WordGrid{
     private char[][]data;
-    private ArrayList<String> wordsInPuzzle = new ArrayList<String>();
+    private ArrayList<String> WordsInPuzzle = new ArrayList<String>();
     Random r = new Random();
     String wordsToFind = "";
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -92,7 +92,6 @@ public class WordGrid{
 		col += dx;
 		row += dy;
 	    }
-	    wordsInPuzzle.add(word);
 	    return true;
 	}else{
 	    return false;
@@ -153,7 +152,7 @@ return	addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextI
 	    while (in.hasNext()){
 		wordBank.add(in.next());
 	    }
-	    // addWordList(wordBank);
+	  
 	    createWordSearch(wordBank);
 	   
 	    if (fillRandomLetters){
@@ -170,30 +169,33 @@ return	addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextI
 	}
     }
 
+
     public String wordsInPuzzle(){
 	String t = "";
-	for (int i = 0; i < wordsInPuzzle.size(); i++){
-	    t += wordsInPuzzle.get(i);
+	int counter = 5;
+	int spaceNext = 0;
+	for (int i = 0; i < WordsInPuzzle.size(); i++){
+	    spaceNext = (10 - WordsInPuzzle.get(i).length());
+	    if (counter == 0){
+		counter = 5;
+		t += "\n";
+	    }
+	    t += WordsInPuzzle.get(i);
+	    for(int s = spaceNext;s>0;s--){
+		t += " ";
+	    }
+	    counter--;
 	}
 	return t;
     }
 
-
-    public void addWordList(ArrayList<String> words){
-    for(int w = 0; w < words.size(); w++ ){
-	String wordie = words.get(w);
-	if(addWordRandomly(wordie)){   
-		wordsInPuzzle.add(wordie);
-	    }
-	}
-    }
 
     public void createWordSearch(ArrayList<String> words){
 	for(int i = 0; i < words.size(); i++){
 	    int tries = 100;
 	    do{
 		if(addWordRandomly(words.get(i))){
-		    wordsInPuzzle.add(words.get(i));
+		    WordsInPuzzle.add(words.get(i));
 		    tries = 0;
 		}else{
 		    tries--;

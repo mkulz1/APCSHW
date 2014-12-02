@@ -30,14 +30,15 @@ public class Driver{
 	    System.out.println("java Driver [rows] [columns] [RandomSeed] [ShowSolution?]");
 	}
 
-	WordGrid data = new WordGrid(Integer.valueOf(rows), Integer.valueOf(columns));
+	WordGrid wordGrid = new WordGrid(Integer.valueOf(rows), Integer.valueOf(columns));
 	if(isSeed){
-	    data.setSeed(Long.valueOf(args[2]));
+	    wordGrid.setSeed(Long.valueOf(args[2]));
 	}
 
-	System.out.println("WordSearch:");  
-	data.loadWordsFromFile("WordList.txt",fillRandomLetters);
-	System.out.println(data);		
+	System.out.println("Find the following words:");
+	wordGrid.loadWordsFromFile("WordList.txt",fillRandomLetters);
+	System.out.println(wordGrid.wordsInPuzzle()); 
+	System.out.println(wordGrid);		
     }
 }
 

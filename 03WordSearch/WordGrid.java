@@ -180,6 +180,10 @@ public class WordGrid{
 	}
     }
 
+    public void createWordSearch(ArrayList<String> words){
+	for(int i = 0; i < words.size(); i++){
+data.
+
 
     /**
      *Fills the empty spaces in the grid with random letters.

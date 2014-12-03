@@ -92,7 +92,7 @@ public class SuperArray{
 	    data[currentLength - 1] = null;
 	    currentLength --;
 	    if(currentLength <= (data.length/4))
-	       resize(currentLength*2);
+	       resize(currentLength/2);
 	    return oldValue;
 	}
     }
@@ -101,15 +101,29 @@ public class SuperArray{
 	String temp = "";
 	for( int i = 1; i < size(); i++ ){
 	    temp = data[i];
-	    for (int v = i; v < size(); v++){
-		if(data[v].compareTo(temp) < 0){
-		    temp = data[v];
+	    int j = i - 1;
+	    while (j >= 0){
+		if (temp.compareTo(data[j]) > 0){
+		    break;
 		}
+		data[j + 1] = data[j];
+		j--;
 	    }
-	    add(i,temp);
+	    data[j + 1] = temp;
 	}
-    } 
-    
+    }
+   
+
+    public void badInsertionSort(){
+        OrderedSuperArray c = new OrderedSuperArray();
+        while( this.size() > 0){ 
+            c.add(this.remove(0));
+        }
+        while(c.size() > 0){
+            this.add(c.remove(0));
+        }
+    }
+    /*
     public static void main(String[] args){
 	SuperArray tester = new SuperArray(5); 
 	tester.add("hi");
@@ -125,5 +139,5 @@ public class SuperArray{
 	System.out.println(tester);
 	System.out.println("Current length of the array:");
 	System.out.println(tester.currentLength);
-    }
+	}*/
 }

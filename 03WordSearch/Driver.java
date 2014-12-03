@@ -3,8 +3,8 @@ import java.io.*;
 public class Driver{
     public static void main(String[] args) {
 
-        String rows = "10";
-	String columns = "10";
+        String rows = "20";
+	String columns = "20";
 	boolean fillRandomLetters = true;
 	boolean isSeed = false;
 
@@ -36,10 +36,11 @@ public class Driver{
 	}
 	boolean check = false;
 	do{
-	    System.out.println("Welcome to MKULZ Word Search Generator!");
+	    System.out.println("\nWelcome to MKULZ Word Search Generator!");
 	    System.out.println("Choose a theme:");
 	    System.out.println("a : Cities of the World");
 	    System.out.println("b : Car Brands");
+	    System.out.println("c : Animals");
 	    Scanner start = new Scanner(System.in);
 	    String theStart = start.nextLine();
 	    
@@ -49,13 +50,15 @@ public class Driver{
 	    }else if(theStart.equals("b")){
 		wordGrid.loadWordsFromFile("Cars.txt",fillRandomLetters);
 		check = true;
+	    }else if(theStart.equals("c")){
+		wordGrid.loadWordsFromFile("Animals.txt",fillRandomLetters);
+		check = true;
 	    }else{
 		System.out.println("Please choose again!");
 	    }
 	}while(!check);
   
 	System.out.println("\nFind the following words:");
-	wordGrid.loadWordsFromFile("WordList.txt",fillRandomLetters);
 	System.out.println(wordGrid.wordsInPuzzle() + "\n"); 
 	System.out.println(wordGrid);		
     }

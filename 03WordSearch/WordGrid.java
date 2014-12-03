@@ -19,7 +19,7 @@ public class WordGrid{
 	clear();
     }
     public WordGrid(){
-	this(10,10);       // Default makes a 10x10 grid
+	this(20,20);       // Default makes a 20x20 grid
     }
 
     /**Set all values in the WordGrid to spaces ' '
@@ -160,7 +160,6 @@ return	addWord(word, r.nextInt(data.length),  r.nextInt(data[0].length), r.nextI
 	    }else{
 		fill();
 	    }
-	    System.out.println(data);
 
 	}catch(FileNotFoundException e){
 

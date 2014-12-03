@@ -34,10 +34,29 @@ public class Driver{
 	if(isSeed){
 	    wordGrid.setSeed(Long.valueOf(args[2]));
 	}
-
-	System.out.println("Find the following words:");
+	boolean check = false;
+	do{
+	    System.out.println("Welcome to MKULZ Word Search Generator!");
+	    System.out.println("Choose a theme:");
+	    System.out.println("a : Cities of the World");
+	    System.out.println("b : Car Brands");
+	    Scanner start = new Scanner(System.in);
+	    String theStart = start.nextLine();
+	    
+	    if(theStart.equals("a")){
+		wordGrid.loadWordsFromFile("Cities.txt",fillRandomLetters);
+		check = true;
+	    }else if(theStart.equals("b")){
+		wordGrid.loadWordsFromFile("Cars.txt",fillRandomLetters);
+		check = true;
+	    }else{
+		System.out.println("Please choose again!");
+	    }
+	}while(!check);
+  
+	System.out.println("\nFind the following words:");
 	wordGrid.loadWordsFromFile("WordList.txt",fillRandomLetters);
-	System.out.println(wordGrid.wordsInPuzzle()); 
+	System.out.println(wordGrid.wordsInPuzzle() + "\n"); 
 	System.out.println(wordGrid);		
     }
 }

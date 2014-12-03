@@ -17,6 +17,17 @@ public class OrderedSuperArray extends SuperArray{
 	super.add(rightIndex,o);
     }
 
+    public void add(int index, String o){
+	add(o);
+    }
+
+    public String set(int index, String o){
+	String s = get(index);
+	remove(index);
+	add(o);
+	return s;
+    }
+
     public static void main(String[] args){
 	OrderedSuperArray byes = new OrderedSuperArray(4);
 	byes.add("bye");

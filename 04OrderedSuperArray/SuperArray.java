@@ -3,10 +3,15 @@ public class SuperArray{
     int currentLength;
 
     public SuperArray(){
-	data = new String[10];
+	this(10);
     }
     public SuperArray(int size){
 	data = new String[size];
+	currentLength = 0;
+    }
+
+    public int size(){
+	return currentLength;
     }
 
     public String toString() {
@@ -95,7 +100,13 @@ public class SuperArray{
     public void insertionSort(){
 	String temp = "";
 	for( int i = 1; i < size(); i++ ){
-	
+	    temp = data[i];
+	    for (int v = i; v < size(); v++){
+		if(data[v].compareTo(temp) < 0){
+		    temp = data[v];
+		}
+	    }
+	    add(i,temp);
 	}
     } 
     

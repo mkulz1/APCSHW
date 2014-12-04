@@ -123,4 +123,13 @@ public class SuperArray{
             this.add(c.remove(0));
         }
     }
+
+    public int find(String target){
+	int index = 0;
+	for(int i = 0; i < size(); i++){
+	    if(data[i].equals(target))
+		index = i;
+	}
+	return index;
+    }
 }

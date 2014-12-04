@@ -126,10 +126,22 @@ public class SuperArray{
 
     public int find(String target){
 	int index = 0;
-	for(int i = 0; i < size(); i++){
+	int i = 0;
+	while(index == 0 && i < size()){
 	    if(data[i].equals(target))
 		index = i;
+	    i++;
 	}
 	return index;
     }
+    
+    
+    /*
+      
+      for(int i = 0; i < size(); i++){
+	if(data[i].equals(target))
+	    index = i;
+		}
+	return index;
+	}*/
 }

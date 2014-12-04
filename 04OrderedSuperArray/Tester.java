@@ -8,10 +8,13 @@ public class Tester{
 	tester.add("greetings");
 	tester.add("apple");
 	tester.add("zebra");
+	tester.add("hola");
 	System.out.println(tester);
 	System.out.println(tester.find("hola"));
 	//	long startTime = System.nanoTime();
 	tester.insertionSort();
+	System.out.println(tester);
+	System.out.println(tester.find("hola"));
 	/*	long endTime = System.nanoTime();
 	System.out.println(tester);
 	System.out.println();

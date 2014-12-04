@@ -1,0 +1,9 @@
+I created a tester class to test whether the sorting method works.
+I added random words into SuperArray tester.
+It prints out the unsorted array. 
+Right before it sorts it, it records the start time from System.nanoTime().
+Then, I insertSort().
+As soon as its done, it records the ends time. 
+The speed of the method is printed as the difference between the start and end time. 
+Then I repeat that same procedure for badInsertionSort().
+Thus, I compare the times. 

@@ -123,21 +123,4 @@ public class SuperArray{
             this.add(c.remove(0));
         }
     }
-    /*
-    public static void main(String[] args){
-	SuperArray tester = new SuperArray(5); 
-	tester.add("hi");
-	tester.add("hello");
-	tester.add("hola");
-	tester.add("greetings");
-	System.out.println("In the array...");
-	System.out.println(tester);
-	System.out.println("At index 3:");
-	tester.get(3);
-	System.out.println("Clearing the array...");
-	tester.clear();
-	System.out.println(tester);
-	System.out.println("Current length of the array:");
-	System.out.println(tester.currentLength);
-	}*/
 }

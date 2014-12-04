@@ -9,16 +9,17 @@ public class Tester{
 	tester.add("apple");
 	tester.add("zebra");
 	System.out.println(tester);
-	long startTime = System.nanoTime();
+	System.out.println(tester.find("hola"));
+	//	long startTime = System.nanoTime();
 	tester.insertionSort();
-	long endTime = System.nanoTime();
+	/*	long endTime = System.nanoTime();
 	System.out.println(tester);
 	System.out.println();
 	System.out.println(endTime - startTime);
 	startTime = System.nanoTime();
 	tester.badInsertionSort();
 	endTime = System.nanoTime();
-	System.out.println(endTime - startTime);
+	System.out.println(endTime - startTime);*/
 
     }
 

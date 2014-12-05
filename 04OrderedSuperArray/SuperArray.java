@@ -134,5 +134,25 @@ public class SuperArray{
 	}
 	return index;
     }
+
+    public String getSmallest(int startIndex){
+	String smallest = data[startIndex];
+	for(int i = startIndex+1;i < size(); i++){
+	    if (smallest.compareTo(data[i]) > 0)
+		smallest = data[i];
+	}
+	return smallest;
+    }
+    
+    public void selectionSort(){
+	int small;
+	String holder;
+	for(int i = 0; i < size(); i++){
+	    small = this.find(this.getSmallest(i));
+	    holder = data[i];
+	    data[i] = data[small];
+	    data[small] = holder;
+	}
+    }    
     
 }

@@ -28,10 +28,12 @@ public class Window extends JFrame implements ActionListener{
 	b = new JButton("Punctuate!"); // What the button says. 
 	l = new JLabel("This is AWESOME! (lies)", null, JLabel.CENTER); 
 	t = new JTextField(12); // Size aka. width   
-	c = new JCheckBox("Check this box! (nothing will happen)");
+	c = new JCheckBox("!!!!!");
 
 	b.setActionCommand("addPeriod");
 	b.addActionListener(this); //I'm gonna add mysels to this window (class).
+	//clear.setActionCommand("delete");
+	//clear.addActionListener(this);
 
 	// ORDER MATTERS
 	pane.add(b);
@@ -44,7 +46,20 @@ public class Window extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
-	System.out.println(action);
+	//	System.out.println(action);
+	if (action.equals("addPeriod")){
+	    String words = t.getText();
+	    if(c.isSelected()){
+		words += "!";
+	    }else{
+	    words += ".";
+	    }
+	    t.setText(words);
+
+	}
+	if (action.equals("delete")){
+	    t.setText("");
+	}
     }
 
     public static void main(String[] args){

@@ -25,7 +25,7 @@ public class Window extends JFrame implements ActionListener{
 	l = new JLabel("Temperature Converter", null, JLabel.CENTER); 
 	f = new JTextField(12); 
 	c = new JTextField(12); 
-	a = new JCheckBox("Fahrenheit to Celcius");
+	a = new JCheckBox("Fahrenheit to Celsius");
 	u = new JCheckBox("Celcius to Fahrenheit");
 
 
@@ -48,18 +48,19 @@ public class Window extends JFrame implements ActionListener{
 	String action = e.getActionCommand();
 	//	System.out.println(action);
 	if (action.equals("Convert")){
-	    String words = f.getText();
 	    if(a.isSelected()){
+		String temp = f.getText();
 		//Convert f to c
-		words += "!";
+		temp = ((5/9) * (temp-32));
+
 	    }else{
-		words += ".";
+		temp = (temp * (9/5)) + 32;
 	    }
-	    t.setText(words);
+	    c.setText(temp);
 	    
 	}
 	if (action.equals("delete")){
-	    t.setText("");
+	    .setText("");
 	}
     }
 

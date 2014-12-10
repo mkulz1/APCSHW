@@ -28,9 +28,7 @@ public class Converter extends JFrame implements ActionListener{
 
 
 	b.setActionCommand("Convert");
-	b.addActionListener(this); //I'm gonna add myself to this window (class).
-	//clear.setActionCommand("delete");
-	//clear.addActionListener(this);
+	b.addActionListener(this); 
 
 	// ORDER MATTERS
 	pane.add(b);

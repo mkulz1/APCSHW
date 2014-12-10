@@ -7,10 +7,8 @@ public class Converter extends JFrame implements ActionListener{
 
     private JButton b;
     private JLabel l; // Prints text.
-    private JTextField f; // Fahrenheit
-    private JTextField c; // Celcius
-    private JCheckBox a;
-    private JCheckBox u;
+    private JTextField f,c; // Fahrenheit & Celsius
+    private JCheckBox a,u;
 
     public Converter(){
 	this.setTitle("Temperature Converter");

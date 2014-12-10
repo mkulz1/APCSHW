@@ -1,7 +1,7 @@
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*; 
-public class Window extends JFrame implements ActionListener{
+public class Converter extends JFrame implements ActionListener{
 
     private Container pane;
 
@@ -12,14 +12,14 @@ public class Window extends JFrame implements ActionListener{
     private JCheckBox a;
     private JCheckBox u;
 
-    public Window(){
+    public Converter(){
 	this.setTitle("Temperature Converter");
 	this.setSize(600,400);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	pane = this.getContentPane();
-	pane.setLayout(new GridLayout(3,3)); //Grid 
+	pane.setLayout(new FlowLayout()); //Grid 
 
 	b = new JButton("Convert"); // What the button says. 
 	l = new JLabel("Temperature Converter", null, JLabel.CENTER); 
@@ -48,25 +48,24 @@ public class Window extends JFrame implements ActionListener{
 	String action = e.getActionCommand();
 	//	System.out.println(action);
 	if (action.equals("Convert")){
+	    int temp = 0;
 	    if(a.isSelected()){
-		String temp = f.getText();
+		temp = Integer.valueOf(f.getText());
 		//Convert f to c
 		temp = ((5/9) * (temp-32));
-
-	    }else{
+	    }
+	    if(u.isSelected()){
+		temp = Integer.valueOf(c.getText());
+		//Convert c to f
 		temp = (temp * (9/5)) + 32;
 	    }
-	    c.setText(temp);
-	    
-	}
-	if (action.equals("delete")){
-	    .setText("");
+	    c.setText(String.valueOf(temp));   
 	}
     }
 
     public static void main(String[] args){
 
-	Window g = new Window();
+	Converter g = new Converter();
 	g.setVisible(true);
 
     }

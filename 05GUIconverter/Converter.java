@@ -6,13 +6,13 @@ public class Converter extends JFrame implements ActionListener{
     private Container pane;
 
     private JButton b;
-    private JLabel l; // Prints text.
+    private JLabel l,g,r; // Prints text.
     private JTextField f,c; // Fahrenheit & Celsius
     private JCheckBox a,u;
 
     public Converter(){
 	this.setTitle("Temperature Converter");
-	this.setSize(600,400);
+	this.setSize(200,400);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -21,7 +21,9 @@ public class Converter extends JFrame implements ActionListener{
 
 	b = new JButton("Convert"); // What the button says. 
 	l = new JLabel("Temperature Converter", null, JLabel.CENTER); 
+	g = new JLabel("Fahrenheit:", null, JLabel.CENTER); 
 	f = new JTextField(12); 
+	r = new JLabel("Celcius:", null, JLabel.CENTER); 
 	c = new JTextField(12); 
 	a = new JCheckBox("Fahrenheit to Celsius");
 	u = new JCheckBox("Celcius to Fahrenheit");
@@ -31,31 +33,33 @@ public class Converter extends JFrame implements ActionListener{
 	b.addActionListener(this); 
 
 	// ORDER MATTERS
-	pane.add(b);
 	pane.add(l);
+	pane.add(g);	
 	pane.add(f);
+	pane.add(r);
 	pane.add(c);
 	pane.add(a);
 	pane.add(u);
-
+	pane.add(b);
     }
 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
-	//	System.out.println(action);
 	if (action.equals("Convert")){
-	    int temp = 0;
 	    if(a.isSelected()){
-		temp = Integer.valueOf(f.getText());
+		double temp = Double.valueOf(f.getText());
+		temp = ( (temp - 32.0) * (.5556) );
 		//Convert f to c
-		temp = ((5/9) * (temp-32));
+		//	temp = ((5/9) * (temp-32));
+		//	c.setText(String.valueOf(temp));
+		c.setText(String.valueOf(temp));
 	    }
 	    if(u.isSelected()){
-		temp = Integer.valueOf(c.getText());
-		//Convert c to f
-		temp = (temp * (9/5)) + 32;
-	    }
-	    c.setText(String.valueOf(temp));   
+		double temp;
+		temp = Double.valueOf(c.getText());
+		temp = ((temp * (9.0/5.0)) + 32.0) ;
+		f.setText(String.valueOf(temp)); 
+	    }  
 	}
     }
 

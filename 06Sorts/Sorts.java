@@ -27,7 +27,9 @@ public class Sorts{
     
     public static void main(String[] args){
 	int[] data = new int[5];
-	data = {6,7,2,5,4};
+	for (int i = 5; i > 0; i --){
+	    data[5 - i] = i;
+	}
 	System.out.println(data);
     }
 }

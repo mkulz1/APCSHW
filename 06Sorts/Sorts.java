@@ -14,9 +14,17 @@ public class Sorts{
 	}
 	
 	public static void insertion(int[] c){
-	    
+	    for(int i = 0; i < c.length; i++){
+		int n = c[i];
+		int x = i;
+		while( x > 0 && c[x - 1] > n){
+		    c[x] = c[x - 1];
+		    x--;
+		}
+		c[x] = n;
+	    }  
 	}
-
+    
     // Needs toString
     public static String toString(int[] c){
 	String result = "{ "; 
@@ -28,22 +36,14 @@ public class Sorts{
     }
     
     public static void selection(int[] c){
-	for(int i = 0; i < c.length; i++){
-	    int n = c[i];
-	    int x = i;
-	    while( x > 0 && c[x - 1] > n){
-		c[x] = c[x - 1];
-		x--;
-	    }
-	    c[x] = n;
-	} 
+	
     }  
     
     public static void main(String[] args){
 	int[] data = new int[]{4,6,3,2,5,2};
 	System.out.println(toString(data));
 	//	bubble(data);
-	selection(data);
+	insertion(data);
 	System.out.println(toString(data));
     }
 }

@@ -2,9 +2,9 @@ public class Sorts{
    	
 	public static void bubble(int[] c){
 	    int holder;
-	    for(int x = c.length - 1; x>0; x--){
-		for(int i = 0; i < x - 1; i++){ 
-		    if(c[i] < c[i+1]){
+	    for(int x = c.length - 1; x > 0; x--){
+		for(int i = 0; i < x; i++){
+		    if(c[i] > c[i+1]){
 			holder = c[i];
 			c[i] = c[i+1];
 			c[i+1] = holder;

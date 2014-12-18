@@ -1,3 +1,4 @@
+import java.util.*;
 public class Sorts{
     
     public static void bubble(int[] c){
@@ -10,6 +11,19 @@ public class Sorts{
 		    c[i+1] = holder;
 		}
 	    }
+	}
+    }
+
+  public static void selection(int[] c){
+	for(int i = 0; i < c.length-1; i++){
+	    int min = i;
+	    for(int x = i+ 1; x < c.length; x++){
+		if(c[x] < c[min])
+		    min = x;
+	    }
+	    int temp = c[i];
+	    c[i] = c[min];
+	    c[min] = temp;
 	}
     }
     
@@ -25,7 +39,17 @@ public class Sorts{
 	}  
     }
     
-    // Needs toString
+    public static void radix(int[] c){
+	ArrayList<ArrayList<Integer>> bucket = new ArrayList<ArrayList<Integer>>(10);
+	int digit = 0;
+	for(int i = 0; i < c.length; i ++){
+
+	    digit = c[i] % 10;
+
+	}
+    }
+    
+   // Needs toString
     public static String toString(int[] c){
 	String result = "{ "; 
 	for (int i = 0; i < c.length; i++){
@@ -33,27 +57,25 @@ public class Sorts{
 	}
 	result += "}";
 	return result;
-    }
-    
-    public static void selection(int[] c){
-	for(int i = 0; i < c.length-1; i++){
-	    int min = i;
-	    for(int x = i+ 1; x < c.length; x++){
-		if(c[x] < c[min])
-		    min = x;
-	    }
-	    int temp = c[i];
-	    c[i] = c[min];
-	    c[min] = temp;
-	}
     }  
     
     public static void main(String[] args){
-	int[] data = new int[]{4,6,3,2,5,2};
-	System.out.println(toString(data));
-	//	bubble(data);
-	//	insertion(data);
-	selection(data);
-	System.out.println(toString(data));
+	int[] data_bub = new int[]{4,6,3,2,5,2};
+	int[] data_sel = new int[]{13,25,-9,64,3};
+	int[] data_ins = new int[]{21,-97,-4,23,6}; 
+	
+	System.out.println("Un-Sorted:");
+	System.out.println(toString(data_bub));
+	System.out.println(toString(data_sel));
+	System.out.println(toString(data_ins));
+	
+	bubble(data_bub);
+	insertion(data_sel);
+	selection(data_ins);
+	
+	System.out.println("Sorted:");
+	System.out.println(toString(data_bub));
+	System.out.println(toString(data_sel));
+	System.out.println(toString(data_ins));
     }
 }

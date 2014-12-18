@@ -28,7 +28,7 @@ public class Sorts{
     }
     
     public static void selection(int[] c){
-	for(int i = 0; i < c.length - 1; i++){
+	for(int i = 0; i < c.length; i++){
 	    int n = c[i];
 	    int x = i;
 	    while( x > 0 && c[x - 1] > n){

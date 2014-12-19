@@ -48,12 +48,14 @@ public class Sorts{
     }
     
     public static void radix(int[] c){
-	ArrayList<ArrayList<Integer>> bucket = new ArrayList<ArrayList<Integer>>(10);
+	ArrayList<ArrayList<Integer>> buckets = new ArrayList<ArrayList<Integer>>(10);
+	//	ArrayList<Integer> zero = new ArrayList<Integer>(c.length - 1);
+	for(int i = 0; i < buckets.size(); i++){
+	    buckets.add(i, new ArrayList<Integer>());
+	} 
 	int digit = 0;
 	for(int i = 0; i < c.length; i ++){
-
 	    digit = c[i] % 10;
-
 	}
     }
     
